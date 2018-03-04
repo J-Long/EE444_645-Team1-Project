@@ -53,11 +53,11 @@ void UARTsetup (void)
   UCA1CTL1 |= UCSSEL__SMCLK;                // Select SMCLK
 
   // Oversampling method
-  // N = 17MHz / 460800 = 37
-  // N/16 = 2.3
-  // round(0.3 * 16) = 5
-  UCA1BR0 = 2;                              // INT(N/16)
-  UCA1MCTL |= UCBRS_0 + UCBRF_5 + UCOS16;   // UCBRF_x = round((N/16-INT(N/16))*16)
+  // N = 17MHz / 115200 = 147.57
+  // N/16 = 9.223
+  // round(0.223 * 16) = 4
+  UCA1BR0 = 9;                              // INT(N/16)
+  UCA1MCTL |= UCBRS_0 + UCBRF_4 + UCOS16;   // UCBRF_x = round((N/16-INT(N/16))*16)
   UCA1CTL1 &= ~UCSWRST;                     // Re-enable the UART
   UCA1IE |= UCRXIE + UCTXIE;                         // Enable interrupts
 }
@@ -74,13 +74,16 @@ void ADCsetup (void)
   // Initialize ADC12_A
   ADC12CTL0 = ADC12SHT0_8 + ADC12ON;        // Set sample time 
   ADC12CTL1 = ADC12SHP;                     // Enable sample timer
-  ADC12MCTL0 = ADC12SREF_1 + ADC12INCH_10;  // ADC input ch A10 => temp sense 
+  ADC12MCTL0 = ADC12SREF_1 + ADC12INCH_7;  // ADC input ch A10 => temp sense 
   
   __delay_cycles(100);                      // delay to allow Ref to settle
                                             // based on default DCO frequency.
                                             // See Datasheet for typical settle
                                             // time.
   ADC12CTL0 |= ADC12ENC;                    // Enable conversions
+
+  P8DIR |= BIT5;                            // Set a pin to output for power
+  P8OUT |= BIT5;
 }
 
 //------------------------------------------------------------------------------
@@ -90,7 +93,7 @@ void TA1_Setup(void)
 {
   TA1CCTL0 = CCIE;                          // CCR0 toggle, interrupt enabled
   TA1CTL = TASSEL_1 + MC_2 + TACLR;         // ACLK, contmode, clear TAR
-  TA1CCR0 = 16384;                          // 16384/32768 = 0.5 seconds
+  TA1CCR0 = 468;                          // 16384/32768 = 0.5 seconds
   P1DIR |= BIT1;                            // Setup an LED to flash with the timer
 }
 

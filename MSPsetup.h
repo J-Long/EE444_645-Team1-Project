@@ -6,9 +6,6 @@
 //------------------------------------------------------------------------------
 // definitions
 //------------------------------------------------------------------------------
-// Calibrate the Temp Sensor
-#define CALADC12_15V_30C  *((unsigned int *)0x1A1A)   // Temperature Sensor Calibration-30 C
-#define CALADC12_15V_85C  *((unsigned int *)0x1A1C)   // Temperature Sensor Calibration-85 C
 
 extern unsigned char tempflag;                        // a flag to determine if the ADC should
                                                       // temp data

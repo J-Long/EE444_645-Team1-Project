@@ -71,11 +71,11 @@ void UART_ISR(void) __interrupt [USCI_A1_VECTOR]
 void TIMER1A0_ISR(void) __interrupt [TIMER1_A0_VECTOR]
 {
   //  with TACLK = 32768Hz
-  //  CCR0 = (16384)/32768 = 500ms
+  //  CCR0 = (1638)/32768 = 50ms
   float temp;
   char tempstring[20], mins[20], secs[20];
   
-  TA1CCR0 += 16384;                             // Add Offset to CCR0
+  TA1CCR0 += 468;                             // Add Offset to CCR0
   P1OUT ^= BIT1;
 
   if (tempflag == 1){
@@ -83,16 +83,10 @@ void TIMER1A0_ISR(void) __interrupt [TIMER1_A0_VECTOR]
     ADC12CTL0 |= ADC12SC;                       // Start Conversion
     temp = ADC12MEM0;                           // Read the ADC value
     // Calibrate and convert the temp to C
-    temp = (float)(((long)temp - CALADC12_15V_30C) * (85 - 30)) /
-            (CALADC12_15V_85C - CALADC12_15V_30C) + 30.0f;
     ADC12CTL0 &= ~ADC12SC;                      // Stop Conversion
 
     // Print the Temp and Time
-    snprintf(TXbuf+TXbufLen,50,"Temp is %.2f C\r\n",temp);
-    TXbufLen = (unsigned)strlen(TXbuf);
-    snprintf(TXbuf+TXbufLen,50,"Minutes: %.0f\r\n", time/120.0f);
-    TXbufLen = (unsigned)strlen(TXbuf);
-    snprintf(TXbuf+TXbufLen,50,"Seconds: %.0f\r\n", time/2.0f-60*floor(time/120.0f));
+    snprintf(TXbuf+TXbufLen,50,"%.2f\r\n",temp);
     TXbufLen = (unsigned)strlen(TXbuf);
     UCA1TXBUF = TXbuf[TXbufPos];
   } else {
