@@ -13,7 +13,8 @@ extern unsigned char tempflag;                        // a flag to determine if 
 void SetVcoreUp (unsigned int level);                 // Set core voltage to level(e.g. PMMCOREV_1)
 void clockSetup (void);                               // Setup the MCLK, SMCLK 
 void UARTsetup (void);                                // Setup the UART interface
-void ADCsetup (void);                                 // setup the ADC
-void TA1_Setup(void);                                 // Setup the Timer
+void ADC12_Setup (void);                              // Setup the ADC12 for five sensors.
+void TA1_Setup(void);                                 // Setup the Timer A1 for UART
+void TB0_Setup(void);                                 // Setup the Timer B0 for ADC12
 #endif
 

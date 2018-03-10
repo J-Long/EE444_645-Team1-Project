@@ -62,14 +62,11 @@
   <Watches active="0" update="Never" />
  </Watch4>
  <Files>
-  <SessionOpenFile useTextEdit="1" useBinaryEdit="0" codecName="Default" x="32" debugPath="Project.hzp" y="15" path="Project.hzp" left="0" selected="1" name="unnamed" top="0" />
-  <SessionOpenFile useTextEdit="1" useBinaryEdit="0" codecName="Default" x="0" debugPath="commands.c" y="20" path="commands.c" left="0" selected="0" name="unnamed" top="0" />
-  <SessionOpenFile useTextEdit="1" useBinaryEdit="0" codecName="Default" x="32" debugPath="ISR.c" y="90" path="ISR.c" left="0" selected="0" name="unnamed" top="60" />
-  <SessionOpenFile useTextEdit="1" useBinaryEdit="0" codecName="Default" x="0" debugPath="main.c" y="5" path="main.c" left="0" selected="0" name="unnamed" top="0" />
-  <SessionOpenFile useTextEdit="1" useBinaryEdit="0" codecName="Default" x="29" debugPath="MSPsetup.c" y="61" path="MSPsetup.c" left="0" selected="0" name="unnamed" top="39" />
-  <SessionOpenFile useTextEdit="1" useBinaryEdit="0" codecName="Default" x="80" debugPath="MSPsetup.h" y="7" path="MSPsetup.h" left="0" selected="0" name="unnamed" top="0" />
+  <SessionOpenFile useTextEdit="1" useBinaryEdit="0" codecName="Default" x="0" debugPath="main.c" y="0" path="main.c" left="0" selected="1" name="unnamed" top="0" />
+  <SessionOpenFile useTextEdit="1" useBinaryEdit="0" codecName="Default" x="0" debugPath="MSPsetup.c" y="122" path="MSPsetup.c" left="0" selected="0" name="unnamed" top="112" />
+  <SessionOpenFile useTextEdit="1" useBinaryEdit="0" codecName="Default" x="0" debugPath="MSPsetup.h" y="17" path="MSPsetup.h" left="0" selected="0" name="unnamed" top="0" />
+  <SessionOpenFile useTextEdit="1" useBinaryEdit="0" codecName="Default" x="0" debugPath="ISR.c" y="7" path="ISR.c" left="0" selected="0" name="unnamed" top="0" />
   <SessionOpenFile useTextEdit="1" useBinaryEdit="0" codecName="Default" x="0" debugPath="ISR.h" y="0" path="ISR.h" left="0" selected="0" name="unnamed" top="0" />
-  <SessionOpenFile useTextEdit="1" useBinaryEdit="0" codecName="Default" x="0" debugPath="../../AppData/Local/Rowley Associates Limited/CrossWorks for MSP430/v3/packages/include/msp430f5438a.h" y="429" path="../../AppData/Local/Rowley Associates Limited/CrossWorks for MSP430/v3/packages/include/msp430f5438a.h" left="0" selected="0" name="unnamed" top="414" />
  </Files>
- <MSP430CrossStudioWindow activeProject="Project" autoConnectTarget="MSP-FET430UIF(V3)" debugSearchFileMap="" fileDialogInitialDirectory="" fileDialogDefaultFilter="*.c" autoConnectCapabilities="528255" debugSearchPath="" buildConfiguration="MSP430 Debug" />
+ <MSP430CrossStudioWindow activeProject="Project" autoConnectTarget="MSP-FET" debugSearchFileMap="" fileDialogInitialDirectory="" fileDialogDefaultFilter="*.c" autoConnectCapabilities="528255" debugSearchPath="" buildConfiguration="MSP430 Debug" />
 </session>

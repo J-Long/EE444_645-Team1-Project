@@ -19,5 +19,7 @@ extern char TXbuf[50];
 //------------------------------------------------------------------------------
 void UART_ISR(void);
 void TIMER1A0_ISR(void);
+void TIMER0B0_ISR(void);
+void ADC12_ISR(void);
 
 #endif

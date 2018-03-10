@@ -5,8 +5,9 @@ main(void)
 {
   clockSetup();             // Clock Setup Function
   UARTsetup();              // UART Setup Function
-  ADCsetup();               // ADC Setup Function
+  ADC12_Setup();            // ADC Setup Function
   TA1_Setup();              // Timer A1 Setup Function
+  TB0_Setup();              // Timer B0 Setup Function
   _EINT();                  // Enable Interrupts
   LPM3;                     // Enter LPM
 }
