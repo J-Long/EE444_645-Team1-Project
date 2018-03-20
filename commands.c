@@ -7,7 +7,7 @@ void UARTparse ( char *data, unsigned int length)
 {
   // parse a string for commands
   char check;
-  if (strcmp ("TEMP", data) == 0)
+  if (strcmp ("START", data) == 0)
   {
     tempflag = 1;
   }
@@ -18,7 +18,7 @@ void UARTparse ( char *data, unsigned int length)
   else{
     snprintf(TXbuf+TXbufLen,50,"Not a Command. Valid Commands are: \r\n");  // Tell the user the input was not a command. Correct.
     TXbufLen = (unsigned)strlen(TXbuf);
-    snprintf(TXbuf+TXbufLen,50,"TEMP \r\n");
+    snprintf(TXbuf+TXbufLen,50,"START \r\n");
     TXbufLen = (unsigned)strlen(TXbuf);
     snprintf(TXbuf+TXbufLen,50,"STOP \r\n");
     TXbufLen = (unsigned)strlen(TXbuf);

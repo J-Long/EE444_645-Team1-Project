@@ -7,10 +7,6 @@ time = linspace(0,0.0143*999,1000);
 figurel
 hold all;
 ax = plot(time,data);
-ay = plot(time,data);
-az = plot(time,data);
-eda = plot(time,data);
-ppg = plot(time,data);
 
 xlabel('time(s)')
 ylabel('ADC value')
@@ -23,14 +19,14 @@ while(collectData == 1)
         parse = strsplit(fscanf(obj));            % delimit the string at whitespace
         if parse(1) = ACCX
             ax.YData = str2num(parse(2));
-        elseif parse(1) = 'ACCY'
-            ay.YData = str2num(parse(2));
-        elseif parse(1) = 'ACCZ'
-            az.YData = str2num(parse(2));
-        elseif parse(1) = 'EDA'
-            eda.YData = str2num(parse(2));
-        elseif parse(1) = 'PPG'
-            ppg.YData = str2num(parse(2));
+        elseif parse(1) = ACCY
+
+        elseif parse(1) = ACCZ
+
+        elseif parse(1) = EDA
+
+        elseif parse(1) = PPG
+
         else
 
         end
