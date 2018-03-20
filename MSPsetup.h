@@ -7,7 +7,7 @@
 // definitions
 //------------------------------------------------------------------------------
 
-extern unsigned char tempflag;                        // a flag to determine if the ADC should
+extern unsigned char dataflag;                        // a flag to determine if the ADC should
                                                       // temp data
 
 void SetVcoreUp (unsigned int level);                 // Set core voltage to level(e.g. PMMCOREV_1)

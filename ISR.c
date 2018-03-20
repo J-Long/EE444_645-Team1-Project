@@ -2,7 +2,7 @@
 
 unsigned int count = 0, inputPnt = 0, TXbufPos = 0, TXbufLen = 0;
 float time = 0;
-char input[20], TXbuf[50];
+char input[20], TXbuf[50], A_flag = 0;
 
 // Variables for Timer B to service ADC12. The unsigned int ones may change later depending on how we
 // setup UART to access ADC12 stored memory.
@@ -78,26 +78,11 @@ void TIMER1A0_ISR(void) __interrupt [TIMER1_A0_VECTOR]
 {
   //  with TACLK = 32768Hz
   //  CCR0 = (1638)/32768 = 50ms
-  float temp;
-  char tempstring[20], mins[20], secs[20];
   
-  TA1CCR0 += 468;                             // Add Offset to CCR0
+  TA1CCR0 += 4680;                             // Add Offset to CCR0
   P1OUT ^= BIT1;
 
-  if (tempflag == 1){
-    time += 1;
-    ADC12CTL0 |= ADC12SC;                       // Start Conversion
-    temp = ADC12MEM0;                           // Read the ADC value
-    // Calibrate and convert the temp to C
-    ADC12CTL0 &= ~ADC12SC;                      // Stop Conversion
-
-    // Print the Temp and Time
-    snprintf(TXbuf+TXbufLen,50,"%.2f\r\n",temp);
-    TXbufLen = (unsigned)strlen(TXbuf);
-    UCA1TXBUF = TXbuf[TXbufPos];
-  } else {
-    time = 0;
-  }
+  A_flag = 1;
 }
 
 //------------------------------------------------------------------------------
@@ -118,38 +103,55 @@ void TIMER0B0_ISR(void) __interrupt [TIMER0_B0_VECTOR] {
   // Switches between each of the five input channels for our three sensors.
   // (Or 4, if the homebrew EDA is not being used.
   // In that event, [case EDA] needs to be disabled.
-  switch(current_channel) {
-    
-    // 3/5/18 - Again, right now, the most important thing is that raw ADC values could be taken. There will
-    // need to be computations here to turn the raw ADC into physical measurements.
-    case Ax :
-      accel_x = ADC12MEM0;
-      current_channel = Ay;
-      break;
+  if (A_flag == 1){
+    switch(current_channel) {
+      // 3/5/18 - Again, right now, the most important thing is that raw ADC values could be taken. There will
+      // need to be computations here to turn the raw ADC into physical measurements.
+      case Ax :
+        accel_x = ADC12MEM0;
+        snprintf(TXbuf+TXbufLen,50,"ACCX\t%d\r\n",accel_x);
+        TXbufLen = (unsigned)strlen(TXbuf);
+        UCA1TXBUF = TXbuf[TXbufPos];
+        current_channel = Ay;
+        break;
 
-    case Ay :
-      accel_y = ADC12MEM1;
-      current_channel = Az;
-      break;
+      case Ay :
+        accel_y = ADC12MEM1;
+        snprintf(TXbuf+TXbufLen,50,"ACCY\t%d\r\n",accel_y);
+        TXbufLen = (unsigned)strlen(TXbuf);
+        UCA1TXBUF = TXbuf[TXbufPos];
+        current_channel = Az;
+        break;
 
-    case Az :
-      accel_z = ADC12MEM2;
-      current_channel = PPG;
-      break;
+      case Az :
+        accel_z = ADC12MEM2;
+        snprintf(TXbuf+TXbufLen,50,"ACCZ\t%d\r\n",accel_z);
+        TXbufLen = (unsigned)strlen(TXbuf);
+        UCA1TXBUF = TXbuf[TXbufPos];
+        current_channel = PPG;
+        break;
 
-    // 3/5/18 - PPG and EDA sensors will need to be added here. These cases are just here to show that
-    // all five channels are working.
-    case PPG :
-      ppg_var = ADC12MEM3;
-      current_channel = EDA;
-      break;
+      // 3/5/18 - PPG and EDA sensors will need to be added here. These cases are just here to show that
+      // all five channels are working.
+      case PPG :
+        ppg_var = ADC12MEM3;
+        snprintf(TXbuf+TXbufLen,50,"PPG\t%d\r\n",ppg_var);
+        TXbufLen = (unsigned)strlen(TXbuf);
+        UCA1TXBUF = TXbuf[TXbufPos];
+        current_channel = EDA;
+        break;
 
-    case EDA :
-      eda_var = ADC12MEM4;
-      current_channel = Ax;
-      break;
+      case EDA :
+        eda_var = ADC12MEM4;
+        snprintf(TXbuf+TXbufLen,50,"EDA\t%d\r\n",eda_var);
+        TXbufLen = (unsigned)strlen(TXbuf);
+        UCA1TXBUF = TXbuf[TXbufPos];
+        current_channel = Ax;
+        A_flag = 0;
+        break;
 
-    default: current_channel = Ax; break;
+      default: current_channel = Ax; break;
+    }
   }
 }
 

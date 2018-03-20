@@ -1,6 +1,6 @@
 #include "MSPsetup.h"
 
-unsigned char tempflag = 0;
+unsigned char dataflag = 0;
 
 //------------------------------------------------------------------------------
 // clock Setup
@@ -126,7 +126,7 @@ void TB0_Setup(void) {
   TBCCTL0 = CCIE; // Enable interrupt from CCR0
   TBCTL = TBSSEL_1 + MC_1 + TBCLR; // ACLK, upmode, clear TBR
 
-  TBCCR0 = 33; // Counts up 32 cycles + 1, 32.768 kHz / 33 ~ 1 kHz
+  TBCCR0 = 66; // Counts up 32 cycles + 1, 32.768 kHz / 33 ~ 1 kHz
                // or, interrupt every 1 ms
   
 }
