@@ -29,8 +29,6 @@ void clockSetup (void)
     __delay_cycles(100);
   }while (SFRIFG1&OFIFG);                   // Test oscillator fault flag
 
-
-
   __bis_SR_register(SCG0);                  // Disable the FLL control loop while setting DCO
   UCSCTL0 = 0x0000;                         // Set lowest possible DCOx, MODx
   UCSCTL1 = DCORSEL_6;                      // Select DCO range 25MHz operation
@@ -71,8 +69,10 @@ void pinSetup (void)
   P6OUT |= BIT0;
 
   // Turn on some pins to provide power to sensors
-  P5DIR |= BIT1+BIT0;
-  P5OUT |= BIT1+BIT0;
+  P5DIR |= BIT0;
+  P5OUT |= BIT0;
+  P6DIR |= BIT7;
+  P6OUT |= BIT7;
 
   // Timer
   P1DIR |= BIT1;                            // Setup an LED to flash with the timer
@@ -126,6 +126,7 @@ void ADC12_Setup(void) {
   ADC12CTL1 = ADC12SHP;
  
   // (1/5 MHz)*64 = 12.8 us samp time, accelerometer requires > 10 us
+  // NOTE I've upped the sample time for the PPG and EDA
   ADC12CTL0 = ADC12SHT0_10;
 
   // Set up conversion storage registers to store the sensor samples
