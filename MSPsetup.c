@@ -10,11 +10,13 @@ void clockSetup (void)
   SetVcoreUp(PMMCOREV_1);                     
   SetVcoreUp(PMMCOREV_2);                   // Set VCore up
 
+  /* Pin setups within pinSetup()
   P11DIR = BIT0+BIT1+BIT2;                  // P11.1-2 to output direction
   P11SEL |= BIT0+BIT1+BIT2;                 // P11.1-2 to output ACLK,SMCLK,MCLK
+  P7SEL |= 0x03;                            // Select XT1 
+  */
 
   // Initialize LFXT1
-  P7SEL |= 0x03;                            // Select XT1
   UCSCTL6 &= ~(XT1OFF);                     // XT1 On
   UCSCTL6 |= XCAP_3;                        // Internal load cap
 
@@ -43,12 +45,49 @@ void clockSetup (void)
 }
 
 //------------------------------------------------------------------------------
+// Pin Setup
+//------------------------------------------------------------------------------
+void pinSetup (void)
+{
+  // Clock Setup
+  P11DIR = BIT0+BIT1+BIT2;                  // P11.1-2 to output direction
+  P11SEL |= BIT0+BIT1+BIT2;                 // P11.1-2 to output ACLK,SMCLK,MCLK
+  P7SEL |= 0x03;                            // Select XT1
+
+  // Clock Setup
+  P5SEL |= BIT6 + BIT7;                     // Set the TX/RX for USCI_A1
+
+
+  // Accelerometer
+
+  // Enable input from Ports 6.1 (A1, Accel_X), 6.2 (A2, Accel_Y), and 6.3 (A3, Accel_Z)
+  // The MSP430F5438A datasheet says that these values don't matter if the pin is selected
+  // as an ADC12 input channel but I don't believe the datasheet
+  P6SEL |= BIT1+BIT2+BIT3;
+  P6DIR &= ~(BIT1+BIT2+BIT3);
+
+  // Turn on board power to accelerometer
+  P6DIR |= BIT0;
+  P6OUT |= BIT0;
+
+  // Turn on some pins to provide power to sensors
+  P5DIR |= BIT1+BIT0;
+  P5OUT |= BIT1+BIT0;
+
+  // Timer
+  P1DIR |= BIT1;                            // Setup an LED to flash with the timer
+}
+
+//------------------------------------------------------------------------------
 // UART Setup
 //------------------------------------------------------------------------------
 
 void UARTsetup (void)
 {
-  P5SEL |= BIT6 + BIT7;                     // Set the TX/RX for USCI_A1
+  /* Pin setup within pinSetup()
+  P5SEL |= BIT6 + BIT7;                     // Set the TX/RX for USCI_A1 
+  */
+
   UCA1CTL1 |= UCSWRST;                      // disable UART during setup
   UCA1CTL1 |= UCSSEL__SMCLK;                // Select SMCLK
 
@@ -66,7 +105,19 @@ void UARTsetup (void)
 // ADC Setup
 //------------------------------------------------------------------------------
 void ADC12_Setup(void) {
-  
+
+  /* Pin setup within pinSetup()
+  // Enable input from Ports 6.1 (A1, Accel_X), 6.2 (A2, Accel_Y), and 6.3 (A3, Accel_Z)
+  // The MSP430F5438A datasheet says that these values don't matter if the pin is selected
+  // as an ADC12 input channel but I don't believe the datasheet
+  P6SEL |= BIT1+BIT2+BIT3;
+  P6DIR &= ~(BIT1+BIT2+BIT3);
+
+  // Turn on board power to accelerometer
+  P6DIR = BIT0;
+  P6OUT = BIT0;
+  */
+
   /* Initialize reference module, VREF = 1.5 V */
   REFCTL0 |= REFMSTR + REFVSEL_0 + REFON + REFOUT;
 
@@ -75,16 +126,16 @@ void ADC12_Setup(void) {
   ADC12CTL1 = ADC12SHP;
  
   // (1/5 MHz)*64 = 12.8 us samp time, accelerometer requires > 10 us
-  ADC12CTL0 = ADC12SHT0_4;
+  ADC12CTL0 = ADC12SHT0_10;
 
   // Set up conversion storage registers to store the sensor samples
   // the ADC12 generates. The reference voltage is AVCC, ~3.0 V, same as the power for the
   // accelerometer.
-  ADC12MCTL0 = ADC12SREF_0 + ADC12INCH_1; // MEM0 = A1 = Accel_X
+  ADC12MCTL0 = ADC12SREF_0 + ADC12INCH_1; // MEM0 = A1 = Accel_X 
   ADC12MCTL1 = ADC12SREF_0 + ADC12INCH_2; // MEM1 = A2 = Accel_Y
   ADC12MCTL2 = ADC12SREF_0 + ADC12INCH_3; // MEM2 = A3 = Accel_Z
-  ADC12MCTL3 = ADC12SREF_0 + ADC12INCH_12; // MEM3 = A12 = PPG
-  ADC12MCTL4 = ADC12SREF_0 + ADC12INCH_13; // MEM4 = A13 = EDA (if used)
+  ADC12MCTL3 = ADC12SREF_0 + ADC12INCH_12; // P7.4 MEM3 = A12 = PPG
+  ADC12MCTL4 = ADC12SREF_0 + ADC12INCH_13; // P7.5 MEM4 = A13 = EDA (if used)
 
   // Let REF Module Stabilize after being turned on. 1000 is test value we can change later.
   __delay_cycles(1000); 
@@ -92,20 +143,6 @@ void ADC12_Setup(void) {
   // Turn on ADC12, enable conversions, and enable mem overflow 
   // and conversion overflow interrupts
   ADC12CTL0 |= ADC12ON + ADC12OVIE + ADC12TOVIE + ADC12ENC;
-
-  // Enable input from Ports 6.1 (A1, Accel_X), 6.2 (A2, Accel_Y), and 6.3 (A3, Accel_Z)
-  // The MSP430F5438A datasheet says that these values don't matter if the pin is selected
-  // as an ADC12 input channel but I don't believe the datasheet
-  P6SEL |= BIT1+BIT2+BIT3;
-  P6DIR &= ~(BIT1+BIT2+BIT3);
-
-  /* This section below is used to turn on board power to external sensors. */
-
-  // Turn on board power to accelerometer
-  P6DIR = BIT0;
-  P6OUT = BIT0;
-
-  /* The section above is used to turn on board power to external sensors. */
 }
 
 //------------------------------------------------------------------------------
@@ -113,10 +150,12 @@ void ADC12_Setup(void) {
 //------------------------------------------------------------------------------
 void TA1_Setup(void)
 {
+  /* Pin setup within pinSetup()
+  P1DIR |= BIT1;                            // Setup an LED to flash with the timer
+  */
   TA1CCTL0 = CCIE;                          // CCR0 toggle, interrupt enabled
   TA1CTL = TASSEL_1 + MC_2 + TACLR;         // ACLK, contmode, clear TAR
   TA1CCR0 = 468;                          // 16384/32768 = 0.5 seconds
-  P1DIR |= BIT1;                            // Setup an LED to flash with the timer
 }
 
 //------------------------------------------------------------------------------
@@ -125,7 +164,6 @@ void TA1_Setup(void)
 void TB0_Setup(void) {
   TBCCTL0 = CCIE; // Enable interrupt from CCR0
   TBCTL = TBSSEL_1 + MC_1 + TBCLR; // ACLK, upmode, clear TBR
-
   TBCCR0 = 66; // Counts up 32 cycles + 1, 32.768 kHz / 33 ~ 1 kHz
                // or, interrupt every 1 ms
   
