@@ -7,7 +7,7 @@ delete(instrfind('Port',port))          % delete any object using COM14
 obj = serial(port,'BaudRate',115200);   % Check if the port is being used still
 
 % setup the time vector
-time = 0:seconds(0.15):minutes(2); 
+time = 0:seconds(0.01):minutes(1); 
 
 % Set the ADC conversion factors
 Vm = 0;                                 % Negative reference voltage
@@ -89,4 +89,5 @@ while(obj.BytesAvailable ~= 0)
         % do nothing
     end
     drawnow limitrate
+    HR = sum(diff(ppgdata>(mean(ppgdata)*1.2))==1)
 end
