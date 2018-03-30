@@ -79,7 +79,7 @@ void TIMER1A0_ISR(void) __interrupt [TIMER1_A0_VECTOR]
   //  with TACLK = 32768Hz
   //  CCR0 = (1638)/32768 = 50ms
   
-  TA1CCR0 += 4680;                             // Add Offset to CCR0
+  TA1CCR0 += 656;                             // Add Offset to CCR0
   P1OUT ^= BIT1;
 
   A_flag = 1;

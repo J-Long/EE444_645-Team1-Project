@@ -2,16 +2,22 @@ clc;clear; clf;close all;
 % type "tmtool" into the command window and delete open serial object
 % Change thee 'COM8' below to whatever COM port the MSP is on.
 
-port = 'COM14';                         % Port that device is on
+port = 'COM16';                         % Port that device is on
 delete(instrfind('Port',port))          % delete any object using COM14
 obj = serial(port,'BaudRate',115200);   % Check if the port is being used still
+dt = 0.02;
 
 % setup the time vector
-time = 0:seconds(0.01):minutes(1); 
+time = 0:seconds(dt):minutes(3); 
 
 % Set the ADC conversion factors
 Vm = 0;                                 % Negative reference voltage
 Vp = 3;                               % Postiive reference voltage
+
+% setup filter parameters for eda data
+windowSize = 100; 
+b = (1/windowSize)*ones(1,windowSize);
+a = 1;
 
 % initialize the data vectors
 axdata = zeros(length(time),1);
@@ -78,7 +84,8 @@ while(obj.BytesAvailable ~= 0)
         ADC = str2num(cell2mat(parse(2)));
         V = (ADC/4095)*(Vp-Vm) + Vm;
         edadata(1) = V;
-        eda.YData = edadata;
+        edadatafiltered = filter(b,a,edadata);
+        eda.YData = edadatafiltered;
     elseif cell2mat(strfind(parse(1),'PPG')) ~= 0
         ppgdata = circshift(ppgdata,1);
         ADC = str2num(cell2mat(parse(2)));
@@ -89,5 +96,5 @@ while(obj.BytesAvailable ~= 0)
         % do nothing
     end
     drawnow limitrate
-    HR = sum(diff(ppgdata>(mean(ppgdata)*1.2))==1)
+    HR = sum(diff(ppgdata(1:20/dt)>(mean(ppgdata(1:20/dt))*1.05))==1)*3
 end
