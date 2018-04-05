@@ -1,0 +1,180 @@
+FILE_TYPE = EXPANDEDPARTLIST;
+{ Using PSTWRITER 17.2.0 d001Apr-04-2018 at 19:36:51 }
+DIRECTIVES
+ PST_VERSION='PST_HDL_CENTRIC_VERSION_0';
+ ROOT_DRAWING='SCHEMATIC';
+ POST_TIME='Jan 28 2018 21:39:09';
+ SOURCE_TOOL='CAPTURE_WRITER';
+END_DIRECTIVES;
+
+PART_NAME
+ 0.1U_C1 'C_ELECT_THROUGH_CAP_1000UF':;
+
+SECTION_NUMBER 1
+ '@SCHEMATIC.SCHEMATIC1(SCH_1):INS2534@ARCLIB.C_ELECT.NORMAL(CHIPS)':
+ C_PATH='@schematic.schematic1(sch_1):ins2534@arclib.\c_elect.normal\(chips)',
+ P_PATH='@schematic.schematic1(sch_1):page1_ins2534@arclib.\c_elect.normal\(chips)',
+ PRIM_FILE='.\pstchip.dat',
+ SECTION='';
+
+PART_NAME
+ 0.1U_C2 'C_ELECT_THROUGH_CAP_1000UF':;
+
+SECTION_NUMBER 1
+ '@SCHEMATIC.SCHEMATIC1(SCH_1):INS2786@ARCLIB.C_ELECT.NORMAL(CHIPS)':
+ C_PATH='@schematic.schematic1(sch_1):ins2786@arclib.\c_elect.normal\(chips)',
+ P_PATH='@schematic.schematic1(sch_1):page1_ins2786@arclib.\c_elect.normal\(chips)',
+ PRIM_FILE='.\pstchip.dat',
+ SECTION='';
+
+PART_NAME
+ 10M_R2 'R_THD_8MM_18':;
+
+SECTION_NUMBER 1
+ '@SCHEMATIC.SCHEMATIC1(SCH_1):INS1687@ARCLIB.R.NORMAL(CHIPS)':
+ C_PATH='@schematic.schematic1(sch_1):ins1687@arclib.\r.normal\(chips)',
+ P_PATH='@schematic.schematic1(sch_1):page1_ins1687@arclib.\r.normal\(chips)',
+ PRIM_FILE='.\pstchip.dat',
+ SECTION='';
+
+PART_NAME
+ 10K_R3 'R_THD_8MM_18':;
+
+SECTION_NUMBER 1
+ '@SCHEMATIC.SCHEMATIC1(SCH_1):INS1855@ARCLIB.R.NORMAL(CHIPS)':
+ C_PATH='@schematic.schematic1(sch_1):ins1855@arclib.\r.normal\(chips)',
+ P_PATH='@schematic.schematic1(sch_1):page1_ins1855@arclib.\r.normal\(chips)',
+ PRIM_FILE='.\pstchip.dat',
+ SECTION='';
+
+PART_NAME
+ 10K_R5 'R_THD_8MM_18':;
+
+SECTION_NUMBER 1
+ '@SCHEMATIC.SCHEMATIC1(SCH_1):INS2507@ARCLIB.R.NORMAL(CHIPS)':
+ C_PATH='@schematic.schematic1(sch_1):ins2507@arclib.\r.normal\(chips)',
+ P_PATH='@schematic.schematic1(sch_1):page1_ins2507@arclib.\r.normal\(chips)',
+ PRIM_FILE='.\pstchip.dat',
+ SECTION='';
+
+PART_NAME
+ 330K_R4 'R_THD_8MM_18':;
+
+SECTION_NUMBER 1
+ '@SCHEMATIC.SCHEMATIC1(SCH_1):INS1969@ARCLIB.R.NORMAL(CHIPS)':
+ C_PATH='@schematic.schematic1(sch_1):ins1969@arclib.\r.normal\(chips)',
+ P_PATH='@schematic.schematic1(sch_1):page1_ins1969@arclib.\r.normal\(chips)',
+ PRIM_FILE='.\pstchip.dat',
+ SECTION='';
+
+PART_NAME
+ 330K_R6 'R_THD_8MM_18':;
+
+SECTION_NUMBER 1
+ '@SCHEMATIC.SCHEMATIC1(SCH_1):INS2814@ARCLIB.R.NORMAL(CHIPS)':
+ C_PATH='@schematic.schematic1(sch_1):ins2814@arclib.\r.normal\(chips)',
+ P_PATH='@schematic.schematic1(sch_1):page1_ins2814@arclib.\r.normal\(chips)',
+ PRIM_FILE='.\pstchip.dat',
+ SECTION='';
+
+PART_NAME
+ J1 'CON12_CON12_CON12':;
+
+SECTION_NUMBER 1
+ '@SCHEMATIC.SCHEMATIC1(SCH_1):INS277@ARCLIB.CON12.NORMAL(CHIPS)':
+ C_PATH='@schematic.schematic1(sch_1):ins277@arclib.\con12.normal\(chips)',
+ P_PATH='@schematic.schematic1(sch_1):page1_ins277@arclib.\con12.normal\(chips)',
+ PRIM_FILE='.\pstchip.dat',
+ SECTION='';
+
+PART_NAME
+ J10 'CON2_CON2_CON2':;
+
+SECTION_NUMBER 1
+ '@SCHEMATIC.SCHEMATIC1(SCH_1):INS1926@ARCLIB.CON2.NORMAL(CHIPS)':
+ C_PATH='@schematic.schematic1(sch_1):ins1926@arclib.\con2.normal\(chips)',
+ P_PATH='@schematic.schematic1(sch_1):page1_ins1926@arclib.\con2.normal\(chips)',
+ PRIM_FILE='.\pstchip.dat',
+ SECTION='';
+
+PART_NAME
+ J2 'CON12_CON12_CON12':;
+
+SECTION_NUMBER 1
+ '@SCHEMATIC.SCHEMATIC1(SCH_1):INS313@ARCLIB.CON12.NORMAL(CHIPS)':
+ C_PATH='@schematic.schematic1(sch_1):ins313@arclib.\con12.normal\(chips)',
+ P_PATH='@schematic.schematic1(sch_1):page1_ins313@arclib.\con12.normal\(chips)',
+ PRIM_FILE='.\pstchip.dat',
+ SECTION='';
+
+PART_NAME
+ J3 'CON3_CON3_CON3':;
+
+SECTION_NUMBER 1
+ '@SCHEMATIC.SCHEMATIC1(SCH_1):INS360@ARCLIB.CON3.NORMAL(CHIPS)':
+ C_PATH='@schematic.schematic1(sch_1):ins360@arclib.\con3.normal\(chips)',
+ P_PATH='@schematic.schematic1(sch_1):page1_ins360@arclib.\con3.normal\(chips)',
+ PRIM_FILE='.\pstchip.dat',
+ SECTION='';
+
+PART_NAME
+ J4 'CON12_CON12_CON12':;
+
+SECTION_NUMBER 1
+ '@SCHEMATIC.SCHEMATIC1(SCH_1):INS563@ARCLIB.CON12.NORMAL(CHIPS)':
+ C_PATH='@schematic.schematic1(sch_1):ins563@arclib.\con12.normal\(chips)',
+ P_PATH='@schematic.schematic1(sch_1):page1_ins563@arclib.\con12.normal\(chips)',
+ PRIM_FILE='.\pstchip.dat',
+ SECTION='';
+
+PART_NAME
+ J5 'CON12_CON12_CON12':;
+
+SECTION_NUMBER 1
+ '@SCHEMATIC.SCHEMATIC1(SCH_1):INS599@ARCLIB.CON12.NORMAL(CHIPS)':
+ C_PATH='@schematic.schematic1(sch_1):ins599@arclib.\con12.normal\(chips)',
+ P_PATH='@schematic.schematic1(sch_1):page1_ins599@arclib.\con12.normal\(chips)',
+ PRIM_FILE='.\pstchip.dat',
+ SECTION='';
+
+PART_NAME
+ J6 'CON2_CON2_CON2':;
+
+SECTION_NUMBER 1
+ '@SCHEMATIC.SCHEMATIC1(SCH_1):INS702@ARCLIB.CON2.NORMAL(CHIPS)':
+ C_PATH='@schematic.schematic1(sch_1):ins702@arclib.\con2.normal\(chips)',
+ P_PATH='@schematic.schematic1(sch_1):page1_ins702@arclib.\con2.normal\(chips)',
+ PRIM_FILE='.\pstchip.dat',
+ SECTION='';
+
+PART_NAME
+ J7 'CON2_CON2_CON2':;
+
+SECTION_NUMBER 1
+ '@SCHEMATIC.SCHEMATIC1(SCH_1):INS1212@ARCLIB.CON2.NORMAL(CHIPS)':
+ C_PATH='@schematic.schematic1(sch_1):ins1212@arclib.\con2.normal\(chips)',
+ P_PATH='@schematic.schematic1(sch_1):page1_ins1212@arclib.\con2.normal\(chips)',
+ PRIM_FILE='.\pstchip.dat',
+ SECTION='';
+
+PART_NAME
+ J8 'CON7_CON7_CON7':;
+
+SECTION_NUMBER 1
+ '@SCHEMATIC.SCHEMATIC1(SCH_1):INS1477@ARCLIB.CON7.NORMAL(CHIPS)':
+ C_PATH='@schematic.schematic1(sch_1):ins1477@arclib.\con7.normal\(chips)',
+ P_PATH='@schematic.schematic1(sch_1):page1_ins1477@arclib.\con7.normal\(chips)',
+ PRIM_FILE='.\pstchip.dat',
+ SECTION='';
+
+PART_NAME
+ J9 'CON7_CON7_CON7':;
+
+SECTION_NUMBER 1
+ '@SCHEMATIC.SCHEMATIC1(SCH_1):INS1523@ARCLIB.CON7.NORMAL(CHIPS)':
+ C_PATH='@schematic.schematic1(sch_1):ins1523@arclib.\con7.normal\(chips)',
+ P_PATH='@schematic.schematic1(sch_1):page1_ins1523@arclib.\con7.normal\(chips)',
+ PRIM_FILE='.\pstchip.dat',
+ SECTION='';
+
+END.

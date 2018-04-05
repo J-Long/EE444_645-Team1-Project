@@ -1,0 +1,71 @@
+(---------------------------------------------------------------------)
+(                                                                     )
+(    ARTWORK LOG                                                      )
+(                                                                     )
+(    Drawing          : board.brd                                     )
+(    Software Version : 17.2S034                                      )
+(    Date/Time        : Wed Apr 04 19:48:45 2018                      )
+(                                                                     )
+(---------------------------------------------------------------------)
+
+
+ ---- Photoplot outline rectangle not found; using drawing extents.
+
+
+
+
+ Can't open parameter file ... using default values:
+     DEVICE-TYPE        GERBER6X00
+     G-CODES            NO
+     STATIONS-PER-WHEEL 24
+     FILM-SIZE          24000 16000
+     COORDINATES        ABSOLUTE
+     OUTPUT-UNITS       INCHES
+     FORMAT             5.3
+     ABORT-ON-ERROR     abort film & continue
+     SUPPRESS-LEAD-ZEROES     YES
+     SUPPRESS-TRAIL-ZEROES    NO
+     OPTIMIZE           YES
+     SUPPRESS-EQUAL     YES
+     SCALE              1.0
+
+
+
+
+
+================================================================
+     PROCESSING FILM < TOP >
+     TO FILE < C:/Users/jlong53/Desktop/BoardLayout/TOP.art > ...
+================================================================
+
+  FILM PARAMETERS :
+  ---------------------------------------------------------
+  Undefined line width                0.00
+  Mirror code                         NONE
+  Rotate angle                        NONE
+  Offset x:                           0.00
+  Offset y:                           0.00
+  Plot negative                       NO
+  Suppress unconnected internal pads  NO
+  Draw holes only                     NO
+
+
+
+  APERTURES USED (UNIT = IN):
+  ---------------------------------------------------------
+  TYPE       SIZE/NAME                   ROT   MIRROR MODE 
+  ---------------------------------------------------------
+  CIRCLE     0.02000                                  DARK 
+  CIRCLE     0.04400                                  DARK 
+  CIRCLE     0.05000                                  DARK 
+  CIRCLE     0.05600                                  DARK 
+  SQUARE     0.05600                     0.000 NO     DARK 
+
+     TOP created with warnings
+
+
+------------------------------------------------------
+ SUMMARY:
+        TOP created with warnings
+
+ ARTWORK had warnings

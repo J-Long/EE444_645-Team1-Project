@@ -9,7 +9,7 @@
   <EEMStateStorage control="2" />
  </EEMStateStorageWindow>
  <EEMTriggerSequencerWindow>
-  <EEMTriggers seqnxtstate0="0" seqnxtstate1="0" seq_ctl="0" seqaction="" />
+  <EEMTriggers seqnxtstate0="4294967295" seqnxtstate1="4294967295" seq_ctl="4294967295" seqaction="" />
  </EEMTriggerSequencerWindow>
  <EEMTriggersWindow/>
  <ExecutionProfileWindow/>
@@ -65,7 +65,7 @@
   <SessionOpenFile useTextEdit="1" useBinaryEdit="0" codecName="Default" x="0" debugPath="main.c" y="20" path="main.c" left="0" selected="0" name="unnamed" top="24" />
   <SessionOpenFile useTextEdit="1" useBinaryEdit="0" codecName="Default" x="0" debugPath="MSPsetup.c" y="71" path="MSPsetup.c" left="0" selected="0" name="unnamed" top="56" />
   <SessionOpenFile useTextEdit="1" useBinaryEdit="0" codecName="Default" x="0" debugPath="MSPsetup.h" y="18" path="MSPsetup.h" left="0" selected="0" name="unnamed" top="0" />
-  <SessionOpenFile useTextEdit="1" useBinaryEdit="0" codecName="Default" x="16" debugPath="ISR.c" y="81" path="ISR.c" left="0" selected="1" name="unnamed" top="51" />
+  <SessionOpenFile useTextEdit="1" useBinaryEdit="0" codecName="Default" x="0" debugPath="ISR.c" y="81" path="ISR.c" left="0" selected="0" name="unnamed" top="52" />
   <SessionOpenFile useTextEdit="1" useBinaryEdit="0" codecName="Default" x="0" debugPath="ISR.h" y="3" path="ISR.h" left="0" selected="0" name="unnamed" top="0" />
   <SessionOpenFile useTextEdit="1" useBinaryEdit="0" codecName="Default" x="0" debugPath="../../AppData/Local/Rowley Associates Limited/CrossWorks for MSP430/v3/packages/include/msp430f5438a.h" y="2037" path="../../AppData/Local/Rowley Associates Limited/CrossWorks for MSP430/v3/packages/include/msp430f5438a.h" left="0" selected="0" name="unnamed" top="2013" />
  </Files>

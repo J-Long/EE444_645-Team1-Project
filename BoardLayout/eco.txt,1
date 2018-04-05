@@ -1,0 +1,127 @@
+|------------------------------------------------------------------------------|
+|                                 ECO   REPORT                                 |
+|                                                                    Page   1  |
+|------------------------------------------------------------------------------|
+|  board.brd                                                                   |
+|                                                    Wed Apr 04 11:28:16 2018  |
+|------------------------------------------------------------------------------|
+| NET CHANGES                                                                  |
+|- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - |
+|   net  name |  type of change |                net     pins                  |
+|- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - |
+  0            pins ADDED TO this new net
+                                 0.1U_C1.1      10K_R5.2       10M_R2.1       
+                                 J2.4           J3.1           J5.2           
+                                 J9.4           
+ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  
+  N00718       pins ADDED TO this new net
+                                 J4.2           J6.1           
+ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  
+  N00722       pins ADDED TO this new net
+                                 J4.1           J6.2           
+ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  
+  N01235       pins ADDED TO this new net
+                                 10K_R3.1       J3.2           J5.1           
+                                 J7.2           J8.4           J10.1          
+ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  
+  N01942       pins ADDED TO this new net
+                                 10M_R2.2       330K_R4.1      J10.2          
+ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  
+  N01997       pins ADDED TO this new net
+                                 0.1U_C2.1      330K_R4.2      330K_R6.2      
+                                 J8.2           
+ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  
+  N02558       pins ADDED TO this new net
+                                 0.1U_C1.2      10K_R3.2       10K_R5.1       
+                                 J8.3           
+ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  
+  N02737       pins ADDED TO this new net
+                                 0.1U_C2.2      330K_R6.1      J1.3           
+                                 J8.1           
+ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  
+  N04174       pins ADDED TO this new net
+                                 J2.2           J3.3           
+ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  
+  RFPWR        pins ADDED TO this new net
+                                 J7.1           
+|------------------------------------------------------------------------------|
+|                                 ECO   REPORT                                 |
+|                                                                    Page   2  |
+|------------------------------------------------------------------------------|
+|  board.brd                                                                   |
+|                                                    Wed Apr 04 11:28:16 2018  |
+|------------------------------------------------------------------------------|
+| COMPONENT DEFINITION added to design                                         |
+|- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - |
+|    device type                                                               |
+|- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - |
+ CON2_CON2_CON2
+ CON3_CON3_CON3
+ CON7_CON7_CON7
+ CON12_CON12_CON12
+ C_ELECT_THROUGH_CAP_1000UF
+ R_THD_8MM_18
+|------------------------------------------------------------------------------|
+|                                 ECO   REPORT                                 |
+|                                                                    Page   3  |
+|------------------------------------------------------------------------------|
+|  board.brd                                                                   |
+|                                                    Wed Apr 04 11:28:16 2018  |
+|------------------------------------------------------------------------------|
+| COMPONENTS ADDED to design                                                   |
+|- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - |
+|    ref des        |    device type                                           |
+|- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - |
+ 0.1U_C1             C_ELECT_THROUGH_CAP_1000UF 
+ 0.1U_C2             C_ELECT_THROUGH_CAP_1000UF 
+ 10K_R3              R_THD_8MM_18          
+ 10K_R5              R_THD_8MM_18          
+ 10M_R2              R_THD_8MM_18          
+ 330K_R4             R_THD_8MM_18          
+ 330K_R6             R_THD_8MM_18          
+ J1                  CON12_CON12_CON12     
+ J2                  CON12_CON12_CON12     
+ J3                  CON3_CON3_CON3        
+ J4                  CON12_CON12_CON12     
+ J5                  CON12_CON12_CON12     
+ J6                  CON2_CON2_CON2        
+ J7                  CON2_CON2_CON2        
+ J8                  CON7_CON7_CON7        
+ J9                  CON7_CON7_CON7        
+ J10                 CON2_CON2_CON2        
+|------------------------------------------------------------------------------|
+|                                 ECO   REPORT                                 |
+|                                                                    Page   4  |
+|------------------------------------------------------------------------------|
+|  board.brd                                                                   |
+|                                                    Wed Apr 04 11:28:16 2018  |
+|------------------------------------------------------------------------------|
+| SLOT PROPERTIES added to design                                              |
+|- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - |
+|   slot_id    |   x   |   y   |   property   |             value              |
+|- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - |
+ 0.1U_C1.2                      PRIM_FILE      .\pstchip.dat
+ 0.1U_C2.2                      PRIM_FILE      .\pstchip.dat
+ 10K_R3.2                       PRIM_FILE      .\pstchip.dat
+ 10K_R5.2                       PRIM_FILE      .\pstchip.dat
+ 10M_R2.2                       PRIM_FILE      .\pstchip.dat
+ 330K_R4.2                      PRIM_FILE      .\pstchip.dat
+ 330K_R6.2                      PRIM_FILE      .\pstchip.dat
+ J1.9                           PRIM_FILE      .\pstchip.dat
+ J2.9                           PRIM_FILE      .\pstchip.dat
+ J3.3                           PRIM_FILE      .\pstchip.dat
+ J4.9                           PRIM_FILE      .\pstchip.dat
+ J5.9                           PRIM_FILE      .\pstchip.dat
+ J6.2                           PRIM_FILE      .\pstchip.dat
+ J7.2                           PRIM_FILE      .\pstchip.dat
+ J8.7                           PRIM_FILE      .\pstchip.dat
+ J9.7                           PRIM_FILE      .\pstchip.dat
+ J10.2                          PRIM_FILE      .\pstchip.dat
+|------------------------------------------------------------------------------|
+|       Nets changed          :      35                                        |
+|       Comp definitions added:       6                                        |
+|       Components added      :      17                                        |
+|       Slot property added   :      17                                        |
+|                                                                              |
+|   Total ECO changes reported:      75                                        |
+|------------------------------------------------------------------------------|
