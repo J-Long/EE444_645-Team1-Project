@@ -8,7 +8,7 @@ obj = serial(port,'BaudRate',115200);   % Check if the port is being used still
 dt = 0.02;
 
 % setup the time vector
-time = 0:seconds(dt):minutes(3); 
+time = 0:seconds(dt):minutes(30); 
 
 % Set the ADC conversion factors
 Vm = 0;                                 % Negative reference voltage
@@ -61,40 +61,42 @@ tic
 ref = now;
 while(obj.BytesAvailable ~= 0)
     parse = strsplit(fscanf(obj));            % delimit the string at whitespace
-    if cell2mat(strfind(parse(1),'ACCX')) ~= 0
-        axdata = circshift(axdata,1);
-        ADC = str2num(cell2mat(parse(2)));
-        V = (ADC/4095)*(Vp-Vm) + Vm;
-        axdata(1) = (V-Vp/2)/0.3;
-        ax.YData = axdata;
-    elseif cell2mat(strfind(parse(1),'ACCY')) ~= 0
-        aydata = circshift(aydata,1);
-        ADC = str2num(cell2mat(parse(2)));
-        V = (ADC/4095)*(Vp-Vm) + Vm;
-        aydata(1) = (V-Vp/2)/0.3;
-        ay.YData = aydata;
-    elseif cell2mat(strfind(parse(1),'ACCZ')) ~= 0
-        azdata = circshift(azdata,1);
-        ADC = str2num(cell2mat(parse(2)));
-        V = (ADC/4095)*(Vp-Vm) + Vm;
-        azdata(1) = (V-Vp/2)/0.3;
-        az.YData = azdata;
-    elseif cell2mat(strfind(parse(1),'EDA')) ~= 0
-        edadata = circshift(edadata,1);
-        ADC = str2num(cell2mat(parse(2)));
-        V = (ADC/4095)*(Vp-Vm) + Vm;
-        edadata(1) = V;
-        %edadatafiltered = filter(b,a,edadata);
-        eda.YData = edadata;
-    elseif cell2mat(strfind(parse(1),'PPG')) ~= 0
-        ppgdata = circshift(ppgdata,1);
-        ADC = str2num(cell2mat(parse(2)));
-        V = (ADC/4095)*(Vp-Vm) + Vm;
-        ppgdata(1) = V;
-        ppg.YData = ppgdata;
-    else
-        % do nothing
+    if (length(parse)==3)
+        if cell2mat(strfind(parse(1),'ACCX')) ~= 0
+            axdata = circshift(axdata,1);
+            ADC = str2num(cell2mat(parse(2)));
+            V = (ADC/4095)*(Vp-Vm) + Vm;
+            axdata(1) = (V-Vp/2)/0.3;
+            ax.YData = axdata;
+        elseif cell2mat(strfind(parse(1),'ACCY')) ~= 0
+            aydata = circshift(aydata,1);
+            ADC = str2num(cell2mat(parse(2)));
+            V = (ADC/4095)*(Vp-Vm) + Vm;
+            aydata(1) = (V-Vp/2)/0.3;
+            ay.YData = aydata;
+        elseif cell2mat(strfind(parse(1),'ACCZ')) ~= 0
+            azdata = circshift(azdata,1);
+            ADC = str2num(cell2mat(parse(2)));
+            V = (ADC/4095)*(Vp-Vm) + Vm;
+            azdata(1) = (V-Vp/2)/0.3;
+            az.YData = azdata;
+        elseif cell2mat(strfind(parse(1),'EDA')) ~= 0
+            edadata = circshift(edadata,1);
+            ADC = str2num(cell2mat(parse(2)));
+            V = (ADC/4095)*(Vp-Vm) + Vm;
+            edadata(1) = V;
+            %edadatafiltered = filter(b,a,edadata);
+            eda.YData = edadata;
+        elseif cell2mat(strfind(parse(1),'PPG')) ~= 0
+            ppgdata = circshift(ppgdata,1);
+            ADC = str2num(cell2mat(parse(2)));
+            V = (ADC/4095)*(Vp-Vm) + Vm;
+            ppgdata(1) = V;
+            ppg.YData = ppgdata;
+        else
+            % do nothing
+        end
+        drawnow limitrate
+        HR = sum(diff(ppgdata(1:20/dt)>(mean(ppgdata(1:20/dt))*1.1))==1)*3
     end
-    drawnow limitrate
-    HR = sum(diff(ppgdata(1:20/dt)>(mean(ppgdata(1:20/dt))*1.05))==1)*3
 end
