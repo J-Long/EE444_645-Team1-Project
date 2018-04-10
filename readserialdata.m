@@ -2,13 +2,13 @@ clc;clear; clf;close all;
 % type "tmtool" into the command window and delete open serial object
 % Change thee 'COM8' below to whatever COM port the MSP is on.
 
-port = 'COM16';                         % Port that device is on
+port = 'COM20';                         % Port that device is on
 delete(instrfind('Port',port))          % delete any object using COM14
 obj = serial(port,'BaudRate',115200);   % Check if the port is being used still
 dt = 0.02;
 
 % setup the time vector
-time = 0:seconds(dt):minutes(30); 
+time = 0:seconds(dt):minutes(3); 
 
 % Set the ADC conversion factors
 Vm = 0;                                 % Negative reference voltage
@@ -96,7 +96,8 @@ while(obj.BytesAvailable ~= 0)
         else
             % do nothing
         end
+        HR = sum(diff(ppgdata(1:20/dt)>(mean(ppgdata(1:20/dt))*1.1))==1)*3;
+        disp(sprintf('HR: %i',HR))
         drawnow limitrate
-        HR = sum(diff(ppgdata(1:20/dt)>(mean(ppgdata(1:20/dt))*1.1))==1)*3
     end
 end
